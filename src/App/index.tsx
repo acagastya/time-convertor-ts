@@ -1,11 +1,13 @@
 import React from 'react';
 
-function App() {
+import Footer from './comps/Footer';
+import Header from './comps/Header';
+
+function App<never>(): JSX.Element {
   return (
     <div className="container-fluid">
-      <header className="page-header">
-        <h1>time-convertor</h1>
-      </header>
+      <Header />
+      <Footer />
     </div>
   );
 }
