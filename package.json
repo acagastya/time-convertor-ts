@@ -1,4 +1,16 @@
 {
+  "author": {
+    "email": "me@hanabi.in",
+    "name": "Agastya",
+    "url": "http://hanabi.in"
+  },
+  "bugs": {
+    "email": "me@hanabi.in",
+    "url": "https://github.com/acagastya/time-convertor-ts"
+  },
+  "repository": {
+    "url": "https://github.com/acagastya/time-convertor-ts"
+  },
   "name": "time-convertor",
   "version": "0.1.0",
   "private": true,
@@ -6,12 +18,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
+    "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
@@ -35,5 +45,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/moment-timezone": "^0.5.13",
+    "@types/node": "^14.0.5",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "gh-pages": "^2.2.0",
+    "serve": "^11.3.1"
   }
 }
