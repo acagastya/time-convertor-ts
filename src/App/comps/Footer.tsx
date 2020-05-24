@@ -5,7 +5,7 @@ import { YEAR } from '../../utils';
 function Footer<never>(): JSX.Element {
   return (
     <footer
-      className="bottom-top page-footer"
+      className="border-top mt-5 page-footer"
       style={{
         bottom: 0,
         paddingTop: '1rem',
@@ -15,9 +15,19 @@ function Footer<never>(): JSX.Element {
       <div className="text-center">
         <p>
           Copyright &copy; {YEAR}{' '}
-          <a href="https://en.wikinews.org/wiki/User:Acagastya">Agastya</a>.
-          This project is licensed under{' '}
-          <a href="https://opensource.org/licenses/BSD-3-Clause">
+          <a
+            href="https://en.wikinews.org/wiki/User:Acagastya"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Agastya
+          </a>
+          . This project is licensed under{' '}
+          <a
+            href="https://opensource.org/licenses/BSD-3-Clause"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             BSD-3-Clause license
           </a>
           .
