@@ -102,6 +102,7 @@ export {
   unfriendlyStr
 };
 
+const basePath = process.env.PUBLIC_URL;
 const DEFAULT_TZ = 'UTC';
 const HM = 'HH:mm';
 const HMMDY = 'HH:mm MMMM DD, YYYY';
@@ -113,6 +114,7 @@ const YEAR = new Date().getFullYear();
 const YMD = 'YYYY-MM-DD'
 
 export {
+  basePath,
   DEFAULT_TZ,
   HM,
   HMMDY,

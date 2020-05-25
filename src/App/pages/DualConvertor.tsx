@@ -3,7 +3,12 @@ import React from 'react';
 import TimezoneInput from '../comps/TimezoneInput';
 import SavedTimezones from '../comps/SavedTimezones';
 
-import { clearTimezones, displayTime, saveTimezones } from '../../utils';
+import {
+  clearTimezones,
+  displayTime,
+  saveTimezones,
+  getSavedZones,
+} from '../../utils';
 import { HMSDMY } from '../../utils';
 import { IDualConvertor } from '../../utils/interfaces';
 
@@ -61,6 +66,7 @@ function DualConvertor({
         </button>
         <button
           className="btn btn-danger"
+          disabled={getSavedZones().length === 0}
           type="button"
           onClick={clearTimezones}
         >

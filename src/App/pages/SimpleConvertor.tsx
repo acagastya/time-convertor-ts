@@ -9,6 +9,7 @@ import {
   saveTimezones,
   friendlyStr,
   localTimezone,
+  getSavedZones,
 } from '../../utils';
 import { HMSDMY } from '../../utils';
 import { ISimpleConvertor } from '../../utils/interfaces';
@@ -59,6 +60,7 @@ function SimpleConvertor({ time, TZ1, setTZ1 }: ISimpleConvertor): JSX.Element {
         </button>
         <button
           className="btn btn-danger"
+          disabled={getSavedZones().length === 0}
           type="button"
           onClick={clearTimezones}
         >

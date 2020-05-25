@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { basePath } from '../../utils';
+
 function Header<never>(): JSX.Element {
   return (
     <nav className="bg-danger mb-5 navbar navbar-dark navbar-expand-lg">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand" to={`${basePath}/`}>
         <span aria-label="time convertor" role="img">
           {new Date().getMinutes() % 2 ? '⏳' : '⌛️'}
         </span>{' '}
@@ -22,17 +24,17 @@ function Header<never>(): JSX.Element {
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/help">
+            <Link className="nav-link" to={`${basePath}/help`}>
               Help
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/future">
+            <Link className="nav-link" to={`${basePath}/future`}>
               Future
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/from-to">
+            <Link className="nav-link" to={`${basePath}/from-to`}>
               From-to
             </Link>
           </li>

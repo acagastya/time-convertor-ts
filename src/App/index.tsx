@@ -9,7 +9,7 @@ import SimpleConvertor from './pages/SimpleConvertor';
 import Footer from './comps/Footer';
 import Header from './comps/Header';
 
-import { DEFAULT_TZ, localTimezone } from '../utils';
+import { basePath, DEFAULT_TZ, localTimezone } from '../utils';
 import useTime from '../utils/useTime';
 
 function App<never>(): JSX.Element {
@@ -26,7 +26,7 @@ function App<never>(): JSX.Element {
         <Header />
         <Switch>
           <Route
-            path="/future"
+            path={`${basePath}/future`}
             render={() => (
               <FutureConversion
                 time={now}
@@ -37,9 +37,9 @@ function App<never>(): JSX.Element {
               />
             )}
           />
-          <Route path="/help" render={() => <Help time={now} />} />
+          <Route path={`${basePath}/help`} render={() => <Help time={now} />} />
           <Route
-            path="/from-to"
+            path={`${basePath}/from-to`}
             render={() => (
               <DualConvertor
                 setTZ1={setTimezone2}
@@ -51,7 +51,7 @@ function App<never>(): JSX.Element {
             )}
           />
           <Route
-            path="/"
+            path={`${basePath}/`}
             render={() => (
               <SimpleConvertor
                 setTZ1={setTimezone1}
