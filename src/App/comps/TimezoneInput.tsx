@@ -31,11 +31,14 @@ function TimezoneInput({
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const { value } = e.target;
     setInputValue(value);
+
     let recommendations: string[] | [] = [];
     if (value.length) {
       recommendations = options.filter((option) =>
         option.toLowerCase().includes(value.toLowerCase())
       );
+    } else {
+      recommendations = [...options];
     }
     setSuggestions(recommendations);
   }
@@ -87,8 +90,12 @@ function TimezoneInput({
       <div
         className="suggestion-list"
         style={{
-          maxHeight: '50vh',
+          boxShadow:
+            suggestions.length > 0
+              ? '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
+              : 'none',
           left: '15px',
+          maxHeight: '50vh',
           overflow: 'scroll',
           position: 'absolute',
           right: '15px',
@@ -96,7 +103,7 @@ function TimezoneInput({
           zIndex: 2,
         }}
       >
-        <div className="h6">
+        <div className="h6 mb-0">
           <ul className="list-group">
             {
               // @ts-ignore
