@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface ICurrentConvertor {
+export interface IDualConvertor {
   time: moment.Moment;
   TZ1: string;
   TZ2: string;
