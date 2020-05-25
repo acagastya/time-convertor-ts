@@ -9,7 +9,7 @@ import { ISavedTimezones } from '../../utils/interfaces';
 function SavedTimezones({ time }: ISavedTimezones): JSX.Element {
   const savedZones = getSavedZones();
   return (
-    <div className="Saved">
+    <div className="saved">
       {savedZones.length > 0 ? (
         // @ts-ignore
         <ShowSavedZones savedZones={savedZones} time={time} />

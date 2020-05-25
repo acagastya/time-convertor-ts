@@ -3,10 +3,10 @@ import moment from 'moment-timezone';
 import { IDisplayTime } from '../utils/interfaces';
 
 /**
- * @description clears the localStorage
+ * @description clears the zones in localStorage
  */
 function clearTimezones<never>() {
-  localStorage.clear()
+  localStorage.setItem('zones', '{}')
 }
 
 /**
@@ -41,7 +41,7 @@ function getAbbr({ timezone, time }: { timezone: string, time: moment.Moment }):
 }
 
 /**
- * @description Fetch list of saved time zones from the local Storage
+ * @description Fetch list of saved time zones from the localStorage
  * @returns {string[]} Array of saved time zones
  */
 function getSavedZones<never>(): string[] | [] {

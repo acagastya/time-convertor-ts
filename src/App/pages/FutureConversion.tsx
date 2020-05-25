@@ -1,18 +1,12 @@
 import React from 'react';
 import moment from 'moment-timezone';
 
+import FutureConverted from '../comps/FutureConverted';
 import TimezoneInput from '../comps/TimezoneInput';
 
-import {
-  displayTime,
-  friendlyStr,
-  getAbbr,
-  timezoneList,
-  HMMDY,
-  HMSDMY,
-} from '../../utils';
+import { displayTime, timezoneList } from '../../utils';
 import { HM, MAX_DATE, YMD, localTimezone } from '../../utils';
-import { IFutureConversion, IFutureConverted } from '../../utils/interfaces';
+import { IFutureConversion } from '../../utils/interfaces';
 import ErrorAlert from '../comps/ErrorAlert';
 
 function FutureConversion({
@@ -22,7 +16,6 @@ function FutureConversion({
   TZ1,
   TZ2,
 }: IFutureConversion): JSX.Element {
-  //
   const [date, setDate] = React.useState(
     displayTime({ fmtStr: YMD, time: now, timezone: localTimezone })
   );
@@ -102,7 +95,7 @@ function FutureConversion({
 
   return (
     <div className="container">
-      <form onSubmit={handleFormSubmit}>
+      <form autoComplete="false" onSubmit={handleFormSubmit}>
         <div className="form-group">
           <label htmlFor="choose-date">Choose date</label>
           <input
@@ -165,40 +158,6 @@ function FutureConversion({
           <FutureConverted selectedTime={selectedTime} TZ1={TZ1} TZ2={TZ2} />
         ) : null}
       </form>
-    </div>
-  );
-}
-
-function FutureConverted({
-  selectedTime,
-  TZ1,
-  TZ2,
-}: IFutureConverted): JSX.Element {
-  // console.log(selectedTime);
-  const chosenTime = selectedTime;
-  const convertedTime = selectedTime.clone().tz(TZ2);
-  const fromLbl = getAbbr({ timezone: TZ1, time: moment(chosenTime, HMSDMY) });
-  const toLbl = getAbbr({ timezone: TZ2, time: moment(convertedTime, HMSDMY) });
-  return (
-    <div className="mt-5">
-      <div className="row">
-        <div className="col">
-          <h1>{friendlyStr(TZ1)}</h1>
-        </div>
-        <div className="col">
-          <h1>{friendlyStr(TZ2)}</h1>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          {displayTime({ fmtStr: HMMDY, time: chosenTime, timezone: TZ1 })} (
-          {fromLbl})
-        </div>
-        <div className="col">
-          {displayTime({ fmtStr: HMMDY, time: convertedTime, timezone: TZ2 })} (
-          {toLbl})
-        </div>
-      </div>
     </div>
   );
 }
