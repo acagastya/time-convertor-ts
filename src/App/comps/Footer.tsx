@@ -9,7 +9,6 @@ function Footer<never>(): JSX.Element {
       style={{
         bottom: 0,
         paddingTop: '1rem',
-        width: 'calc(100vw - 30px',
       }}
     >
       <div className="text-center">
