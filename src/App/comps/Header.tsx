@@ -2,7 +2,7 @@ import React from 'react';
 
 function Header<never>(): JSX.Element {
   return (
-    <header className="border-bottom page-header mt-3">
+    <header className="border-bottom page-header mt-3 mb-5">
       <h1>time-convertor</h1>
     </header>
   );
