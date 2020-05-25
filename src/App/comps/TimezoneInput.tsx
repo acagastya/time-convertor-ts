@@ -96,7 +96,7 @@ function TimezoneInput({
               : 'none',
           left: '15px',
           maxHeight: '50vh',
-          overflow: 'scroll',
+          overflowX: 'scroll',
           position: 'absolute',
           right: '15px',
           WebkitOverflowScrolling: 'touch',
