@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TimezoneInput from '../comps/TimezoneInput';
+import SavedTimezones from '../comps/SavedTimezones';
 
 import {
   clearTimezones,
@@ -15,11 +16,15 @@ import { ISimpleConvertor } from '../../utils/interfaces';
 function SimpleConvertor({ time, TZ1, setTZ1 }: ISimpleConvertor): JSX.Element {
   return (
     <main className="container">
-      <h3 className="mb-5 text-center">
+      <h1 className="mb-5 text-center">
         Convert <em>current</em> time to other time zone.
-      </h3>
+      </h1>
       <div className="row mb-3" id="labels">
-        <div className="col text-right" id="first-time-lbl-box">
+        <div
+          className="col text-right"
+          id="first-time-lbl-box"
+          style={{ cursor: 'not-allowed' }}
+        >
           <div className="h4">{friendlyStr(localTimezone)} (Local time)</div>
         </div>
         <div className="col" id="second-time-lbl-box">
@@ -53,13 +58,14 @@ function SimpleConvertor({ time, TZ1, setTZ1 }: ISimpleConvertor): JSX.Element {
           Save timezone
         </button>
         <button
-          className="mdx btn btn-danger"
+          className="btn btn-danger"
           type="button"
           onClick={clearTimezones}
         >
           Clear All
         </button>
       </div>
+      <SavedTimezones time={time} />
     </main>
   );
 }

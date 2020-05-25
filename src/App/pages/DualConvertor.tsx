@@ -1,18 +1,19 @@
 import React from 'react';
 
 import TimezoneInput from '../comps/TimezoneInput';
+import SavedTimezones from '../comps/SavedTimezones';
 
 import { clearTimezones, displayTime, saveTimezones } from '../../utils';
 import { HMSDMY } from '../../utils';
-import { ICurrentConvertor } from '../../utils/interfaces';
+import { IDualConvertor } from '../../utils/interfaces';
 
-function CurrentConvertor({
+function DualConvertor({
   time,
   TZ1,
   TZ2,
   setTZ1,
   setTZ2,
-}: ICurrentConvertor): JSX.Element {
+}: IDualConvertor): JSX.Element {
   return (
     <main className="container">
       <h3 className="mb-5 text-center">
@@ -59,15 +60,16 @@ function CurrentConvertor({
           Save timezones
         </button>
         <button
-          className="mdx btn btn-danger"
+          className="btn btn-danger"
           type="button"
           onClick={clearTimezones}
         >
           Clear All
         </button>
       </div>
+      <SavedTimezones time={time} />
     </main>
   );
 }
 
-export default CurrentConvertor;
+export default DualConvertor;
