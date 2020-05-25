@@ -29,6 +29,14 @@ function Footer<never>(): JSX.Element {
           >
             BSD-3-Clause license
           </a>
+          . Report bugs{' '}
+          <a
+            href="https://github.com/acagastya/time-convertor-ts/issues/new"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            here
+          </a>
           .
         </p>
       </div>
