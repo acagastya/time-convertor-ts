@@ -17,10 +17,14 @@ function App<never>(): JSX.Element {
   const [timezone2, setTimezone2] = React.useState(localTimezone);
 
   return (
-    <div className="container-fluid">
-      <Header />
-      <Router>
+    <Router>
+      <div
+        className="container-fluid"
+        style={{ paddingLeft: 0, paddingRight: 0 }}
+      >
+        <Header />
         <Switch>
+          <Route path="/help" render={() => <Help time={now} />} />
           <Route
             path="/from-to"
             render={() => (
@@ -33,7 +37,6 @@ function App<never>(): JSX.Element {
               />
             )}
           />
-          <Route component={Help} path="/help" />
           <Route
             path="/"
             render={() => (
@@ -45,9 +48,9 @@ function App<never>(): JSX.Element {
             )}
           />
         </Switch>
-      </Router>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

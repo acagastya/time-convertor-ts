@@ -18,7 +18,10 @@ function SavedTimezones({ time }: ISavedTimezones): JSX.Element {
           className="border-top mt-5 text-center"
           style={{ paddingTop: '1rem' }}
         >
-          You haven't saved any timezones so far.
+          You haven't saved any timezones so far.{' '}
+          <span aria-label="Saved list is empty." role="img">
+            😅
+          </span>
         </h5>
       )}
     </div>

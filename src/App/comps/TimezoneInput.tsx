@@ -9,6 +9,7 @@ import { ITimezoneInput } from '../../utils/interfaces';
 function TimezoneInput({
   autofocus = false,
   changeValue,
+  clearInput,
   id = '',
   placeholder = 'Time zone',
   TZ = 'UTC',
@@ -30,6 +31,7 @@ function TimezoneInput({
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const { value } = e.target;
+    if (clearInput) clearInput(undefined);
     setInputValue(value);
 
     let recommendations: string[] | [] = [];

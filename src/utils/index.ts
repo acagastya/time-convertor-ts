@@ -29,6 +29,18 @@ function friendlyStr(str: string): string {
 }
 
 /**
+ * 
+ * @param timezone {string} Time zone string
+ * @param time {moment.Moment} moment object
+ * @returns {string}
+ * @description Obtain the abbreviation of a timezone
+ */
+function getAbbr({ timezone, time }: { timezone: string, time: moment.Moment }): string {
+  // @ts-ignore
+  return moment.tz.zone(timezone).abbr(time.unix());
+}
+
+/**
  * @description Fetch list of saved time zones from the local Storage
  * @returns {string[]} Array of saved time zones
  */
@@ -83,6 +95,7 @@ export {
   clearTimezones,
   displayTime,
   friendlyStr,
+  getAbbr,
   getSavedZones,
   removeTimeZone,
   saveTimezones,

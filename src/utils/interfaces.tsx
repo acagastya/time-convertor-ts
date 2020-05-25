@@ -14,6 +14,10 @@ export interface IDisplayTime {
   timezone: string;
 }
 
+export interface IMoment {
+  time: moment.Moment;
+}
+
 export interface ISavedTimezones {
   time: moment.Moment;
 }
@@ -32,6 +36,7 @@ export interface ISimpleConvertor {
 export interface ITimezoneInput {
   autofocus: boolean;
   changeValue: React.Dispatch<React.SetStateAction<string>>;
+  clearInput?: Function;
   id: string;
   placeholder: string;
   TZ: string;
