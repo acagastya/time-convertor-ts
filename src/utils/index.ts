@@ -1,11 +1,14 @@
 import moment from 'moment-timezone';
 
+import { IDisplayTime } from '../utils/interfaces';
+
 /**
  * @description clears the localStorage
  */
-function clearTimezones() {
+function clearTimezones<never>() {
   localStorage.clear()
 }
+
 /**
  * 
  * @param fmtStr {string} Formatting string (ex. 'HH:mm:ss MMMM DD, YYYY')
@@ -13,9 +16,10 @@ function clearTimezones() {
  * @param timezone {string} Timezone to set
  * @returns {string} formatted time
  */
-function displayTime({ fmtStr, time, timezone }: { fmtStr: string; time: moment.Moment; timezone: string }) {
+function displayTime({ fmtStr, time, timezone }: IDisplayTime) {
   return time.tz(timezone).format(fmtStr);
 }
+
 /**
  * @description Convert a string like `foo_bar_baz` to `foo bar baz`
  * @param {string} str 
@@ -25,15 +29,45 @@ function friendlyStr(str: string): string {
 }
 
 /**
+ * @description Fetch list of saved time zones from the local Storage
+ * @returns {string[]} Array of saved time zones
+ */
+function getSavedZones<never>(): string[] | [] {
+  // query localStorage to get JSON as string
+  const savedData: string = localStorage.getItem('zones') || '{}';
+  // extract array
+  const savedZones: string[] = JSON.parse(savedData).list || [];
+  return savedZones;
+}
+
+/**
+ * @param {string} zone zone to be removed from the localStorage
+ * @description Removes one zone from localStorage
+ */
+function removeTimeZone(zone: string = ''): void {
+  // get saved zones
+  const savedZones = getSavedZones();
+  // filter out
+  const updatedZones = savedZones.filter((savedZone) => savedZone !== zone);
+  // stringify JSON
+  const newZonesStr = JSON.stringify({ list: updatedZones });
+  // save to localStorage
+  localStorage.setItem('zones', newZonesStr);
+}
+
+/**
  * 
  * @param timezone {string[]} An array of timezones
  * @description takes in an array of timezones and updates the localStorage
  */
 function saveTimezones(timezone: string[] | [] = []) {
-  const savedData: string = localStorage.getItem('zones') || '{}';
-  const savedZones: string[] = JSON.parse(savedData).list || [];
+
+  const savedZones = getSavedZones();
+  // new array of sorted time zones
   const newZones = Array.from(new Set([...savedZones, ...timezone])).sort();
+  // stringify JSON
   const newZonesStr = JSON.stringify({ list: newZones });
+  // save to localStorage
   localStorage.setItem('zones', newZonesStr);
 }
 
@@ -49,6 +83,8 @@ export {
   clearTimezones,
   displayTime,
   friendlyStr,
+  getSavedZones,
+  removeTimeZone,
   saveTimezones,
   unfriendlyStr
 };
