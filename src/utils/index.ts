@@ -37,7 +37,7 @@ function friendlyStr(str: string): string {
  */
 function getAbbr({ timezone, time }: { timezone: string, time: moment.Moment }): string {
   // @ts-ignore
-  return moment.tz.zone(timezone).abbr(time.unix());
+  return moment.tz.zone(timezone).abbr(time);
 }
 
 /**
@@ -103,15 +103,23 @@ export {
 };
 
 const DEFAULT_TZ = 'UTC';
-const HMSDMY = 'HH:mm:ss MMMM, DD, YYYY';
+const HM = 'HH:mm';
+const HMMDY = 'HH:mm MMMM DD, YYYY';
+const HMSDMY = 'HH:mm:ss MMMM DD, YYYY';
 const localTimezone = moment.tz.guess();
+const MAX_DATE = '2038-01-18';
 const timezoneList = moment.tz.names().sort();
 const YEAR = new Date().getFullYear();
+const YMD = 'YYYY-MM-DD'
 
 export {
   DEFAULT_TZ,
+  HM,
+  HMMDY,
   HMSDMY,
   localTimezone,
+  MAX_DATE,
   timezoneList,
-  YEAR
+  YEAR,
+  YMD
 };

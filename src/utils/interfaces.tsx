@@ -14,6 +14,19 @@ export interface IDisplayTime {
   timezone: string;
 }
 
+export interface IFutureConversion {
+  time: moment.Moment;
+  setTZ1: React.Dispatch<React.SetStateAction<string>>;
+  setTZ2: React.Dispatch<React.SetStateAction<string>>;
+  TZ1: string;
+  TZ2: string;
+}
+export interface IFutureConverted {
+  selectedTime: moment.Moment;
+  TZ1: string;
+  TZ2: string;
+}
+
 export interface IMoment {
   time: moment.Moment;
 }

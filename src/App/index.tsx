@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import DualConvertor from './pages/DualConvertor';
+import FutureConversion from './pages/FutureConversion';
 import Help from './pages/Help';
 import SimpleConvertor from './pages/SimpleConvertor';
 
@@ -24,6 +25,18 @@ function App<never>(): JSX.Element {
       >
         <Header />
         <Switch>
+          <Route
+            path="/future"
+            render={() => (
+              <FutureConversion
+                time={now}
+                setTZ1={setTimezone1}
+                setTZ2={setTimezone2}
+                TZ1={timezone1}
+                TZ2={timezone2}
+              />
+            )}
+          />
           <Route path="/help" render={() => <Help time={now} />} />
           <Route
             path="/from-to"
