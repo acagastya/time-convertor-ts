@@ -8,7 +8,7 @@ function Header<never>(): JSX.Element {
     <nav className="bg-danger mb-5 navbar navbar-dark navbar-expand-lg">
       <Link className="navbar-brand" to={`${basePath}/`}>
         <span aria-label="time-convertor" role="img">
-          ⌛️
+          ⏳
         </span>{' '}
         time convertor
       </Link>

@@ -26,10 +26,12 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "react-scripts build && gh-pages -d build",
+    "eject": "react-scripts eject",
+    "s": "react-scripts start",
+    "start": "react-scripts build && serve -l $PORT -s build",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
