@@ -7,16 +7,16 @@ function Header<never>(): JSX.Element {
   return (
     <nav className="bg-danger mb-5 navbar navbar-dark navbar-expand-lg">
       <Link className="navbar-brand" to={`${basePath}/`}>
-        <span aria-label="time convertor" role="img">
-          {new Date().getMinutes() % 2 ? '⏳' : '⌛️'}
+        <span aria-label="time-convertor" role="img">
+          ⌛️
         </span>{' '}
         time convertor
       </Link>
       <button
         aria-label="Toggle navigation"
         className="navbar-toggler"
-        data-toggle="collapse"
         data-target="#collapsibleNavbar"
+        data-toggle="collapse"
         type="button"
       >
         <span className="navbar-toggler-icon"></span>

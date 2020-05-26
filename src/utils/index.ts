@@ -30,19 +30,19 @@ function friendlyStr(str: string): string {
 
 /**
  * 
+ * @description Obtain the abbreviation of a timezone
  * @param timezone {string} Time zone string
  * @param time {moment.Moment} moment object
  * @returns {string}
- * @description Obtain the abbreviation of a timezone
  */
 function getAbbr({ timezone, time }: { timezone: string, time: moment.Moment }): string {
-  // @ts-ignore
+  // @ts-ignore -- they most certainly won't be undefined
   return moment.tz.zone(timezone).abbr(time);
 }
 
 /**
  * @description Fetch list of saved time zones from the localStorage
- * @returns {string[]} Array of saved time zones
+ * @returns {string[] | []} Array of saved time zones
  */
 function getSavedZones<never>(): string[] | [] {
   // query localStorage to get JSON as string
@@ -53,8 +53,21 @@ function getSavedZones<never>(): string[] | [] {
 }
 
 /**
- * @param {string} zone zone to be removed from the localStorage
+ * @description get yesterday's date as a moment object
+ * @ref { https://flaviocopes.com/how-to-get-yesterday-date-javascript/ }
+ * @returns {moment.Moment}
+ */
+function getYesterday<never>(): moment.Moment {
+  const today = new Date()
+  const yesterday = new Date()
+
+  yesterday.setDate(today.getDate() - 1)
+  return moment(yesterday);
+}
+
+/**
  * @description Removes one zone from localStorage
+ * @param {string} zone zone to be removed from the localStorage
  */
 function removeTimeZone(zone: string = ''): void {
   // get saved zones
@@ -69,11 +82,11 @@ function removeTimeZone(zone: string = ''): void {
 
 /**
  * 
- * @param timezone {string[]} An array of timezones
  * @description takes in an array of timezones and updates the localStorage
+ * @param timezone {string[]} An array of timezones
  */
 function saveTimezones(timezone: string[] | [] = []) {
-
+  // get saved zones
   const savedZones = getSavedZones();
   // new array of sorted time zones
   const newZones = Array.from(new Set([...savedZones, ...timezone])).sort();
@@ -97,6 +110,7 @@ export {
   friendlyStr,
   getAbbr,
   getSavedZones,
+  getYesterday,
   removeTimeZone,
   saveTimezones,
   unfriendlyStr

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { IMoment } from '../../utils/interfaces';
-
 import { getAbbr } from '../../utils';
+
 import { basePath, localTimezone } from '../../utils';
+
+import { IMoment } from '../../utils/interfaces';
 
 function Help({ time }: IMoment): JSX.Element {
   return (
@@ -28,19 +29,6 @@ function Help({ time }: IMoment): JSX.Element {
         <li>
           You can <span className="font-weight-bold">save</span> the converted
           timezones, by clicking the "Save" button.
-          <ul className="list">
-            <li>
-              An ascending order list of converted time zones appear at the
-              bottom.
-            </li>
-            <li>
-              If you wish to clear all the saved time zones, press "Clear All".
-            </li>
-            <li>
-              If you wish to delete an individual timezone, you can delete from
-              the list by.
-            </li>
-          </ul>
         </li>
       </ol>
     </div>

@@ -1,15 +1,17 @@
 import React from 'react';
 
-import TimezoneInput from '../comps/TimezoneInput';
 import SavedTimezones from '../comps/SavedTimezones';
+import TimezoneInput from '../comps/TimezoneInput';
 
 import {
   clearTimezones,
   displayTime,
-  saveTimezones,
   getSavedZones,
+  saveTimezones,
 } from '../../utils';
+
 import { HMSDMY } from '../../utils';
+
 import { IDualConvertor } from '../../utils/interfaces';
 
 function DualConvertor({
@@ -24,7 +26,7 @@ function DualConvertor({
       <h3 className="mb-5 text-center">
         Convert <em>current</em> time across time zones.
       </h3>
-      <div className="row mb-3" id="labels">
+      <div className="mb-3 row" id="labels">
         <div className="col text-right" id="first-time-lbl-box">
           <TimezoneInput
             autofocus={true}

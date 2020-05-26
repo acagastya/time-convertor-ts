@@ -1,26 +1,28 @@
 import React from 'react';
 
-import TimezoneInput from '../comps/TimezoneInput';
 import SavedTimezones from '../comps/SavedTimezones';
+import TimezoneInput from '../comps/TimezoneInput';
 
 import {
   clearTimezones,
   displayTime,
-  saveTimezones,
   friendlyStr,
-  localTimezone,
   getSavedZones,
+  localTimezone,
+  saveTimezones,
 } from '../../utils';
+
 import { HMSDMY } from '../../utils';
+
 import { ISimpleConvertor } from '../../utils/interfaces';
 
-function SimpleConvertor({ time, TZ1, setTZ1 }: ISimpleConvertor): JSX.Element {
+function SimpleConvertor({ setTZ1, time, TZ1 }: ISimpleConvertor): JSX.Element {
   return (
     <main className="container">
       <h1 className="mb-5 text-center">
         Convert <em>current</em> time to other time zone.
       </h1>
-      <div className="row mb-3" id="labels">
+      <div className="mb-3 row" id="labels">
         <div
           className="col text-right"
           id="first-time-lbl-box"
@@ -53,16 +55,16 @@ function SimpleConvertor({ time, TZ1, setTZ1 }: ISimpleConvertor): JSX.Element {
       <div className="text-right mt-5">
         <button
           className="btn btn-success mr-3"
-          type="button"
           onClick={() => saveTimezones([TZ1])}
+          type="button"
         >
           Save timezone
         </button>
         <button
           className="btn btn-danger"
           disabled={getSavedZones().length === 0}
-          type="button"
           onClick={clearTimezones}
+          type="button"
         >
           Clear All
         </button>

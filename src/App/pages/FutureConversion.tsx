@@ -1,18 +1,19 @@
 import React from 'react';
 import moment from 'moment-timezone';
 
+import ErrorAlert from '../comps/ErrorAlert';
 import FutureConverted from '../comps/FutureConverted';
 import TimezoneInput from '../comps/TimezoneInput';
 
-import { displayTime, timezoneList } from '../../utils';
+import { displayTime, getYesterday, timezoneList } from '../../utils';
 import { HM, MAX_DATE, YMD, localTimezone } from '../../utils';
+
 import { IFutureConversion } from '../../utils/interfaces';
-import ErrorAlert from '../comps/ErrorAlert';
 
 function FutureConversion({
-  time: now,
   setTZ1,
   setTZ2,
+  time: now, // aliased because [time, setTime] hook
   TZ1,
   TZ2,
 }: IFutureConversion): JSX.Element {
@@ -25,7 +26,7 @@ function FutureConversion({
 
   const [selectedTime, setSelectedTime] = React.useState<
     moment.Moment | undefined
-  >();
+  >(undefined);
   const [err, setErr] = React.useState<string>('');
 
   function handleDateChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -54,10 +55,10 @@ function FutureConversion({
       console.warn(err);
       return;
     }
-    // 2.2 MIN allowed
-    const todayMoment = moment(now.format(YMD), YMD);
+    // 2.2 MIN allowed -- yesterday
+    const yDayMoment = moment(yesterday.format(YMD), YMD);
     const selectedMoment = moment(selectedDate.format(YMD), YMD);
-    if (selectedMoment.unix() - todayMoment.unix() < 0) {
+    if (selectedMoment.unix() - yDayMoment.unix() < 0) {
       setErr('Chosen date is in the past.');
       console.warn(err);
       return;
@@ -93,6 +94,8 @@ function FutureConversion({
     setSelectedTime(undefined);
   }
 
+  const yesterday = getYesterday();
+
   return (
     <div className="container">
       <form autoComplete="false" onSubmit={handleFormSubmit}>
@@ -105,7 +108,7 @@ function FutureConversion({
             max={MAX_DATE}
             min={displayTime({
               fmtStr: YMD,
-              time: now,
+              time: yesterday,
               timezone: localTimezone,
             })}
             name="choose-date"
@@ -134,9 +137,9 @@ function FutureConversion({
             autofocus={false}
             changeValue={setTZ1}
             clearInput={setSelectedTime}
-            TZ={TZ1}
             id="choose-from-timezone"
             placeholder="Set timezone"
+            TZ={TZ1}
           />
         </div>
         <div className="form-group">
@@ -145,12 +148,12 @@ function FutureConversion({
             autofocus={false}
             changeValue={setTZ2}
             clearInput={setSelectedTime}
-            TZ={TZ2}
             id="convert-to-timezone"
             placeholder="Convert to timezone"
+            TZ={TZ2}
           />
         </div>
-        <button type="submit" className="btn btn-success">
+        <button className="btn btn-success" type="submit">
           Convert
         </button>
         {err ? <ErrorAlert msg={err} /> : null}

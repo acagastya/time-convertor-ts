@@ -78,6 +78,7 @@ function TimezoneInput({
         autoFocus={autofocus}
         className="w-75"
         id={id}
+        maxLength={100}
         name={id}
         onBlur={handleBlur}
         onChange={handleChange}
@@ -87,7 +88,6 @@ function TimezoneInput({
         style={style}
         type="text"
         value={inputValue}
-        maxLength={100}
       />
       <div
         className="suggestion-list"
@@ -108,7 +108,7 @@ function TimezoneInput({
         <div className="h6 mb-0">
           <ul className="list-group">
             {
-              // @ts-ignore
+              // @ts-ignore don't know why ts is complaining about this
               suggestions.length > 0 ? suggestions.map(showLI) : null
             }
           </ul>

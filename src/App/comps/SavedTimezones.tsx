@@ -4,14 +4,13 @@ import ShowSavedZones from './ShowSavedZones';
 
 import { getSavedZones } from '../../utils';
 
-import { ISavedTimezones } from '../../utils/interfaces';
+import { IMoment } from '../../utils/interfaces';
 
-function SavedTimezones({ time }: ISavedTimezones): JSX.Element {
+function SavedTimezones({ time }: IMoment): JSX.Element {
   const savedZones = getSavedZones();
   return (
     <div className="saved">
       {savedZones.length > 0 ? (
-        // @ts-ignore
         <ShowSavedZones savedZones={savedZones} time={time} />
       ) : (
         <h5
