@@ -37,8 +37,10 @@ function TimezoneInput({
     let recommendations: string[] | [] = [];
     if (value.length) {
       recommendations = options.filter((option) =>
-        option.toLowerCase().includes(value.toLowerCase())
+        option.toLowerCase().includes(unfriendlyStr(value).toLowerCase())
       );
+      if (value.length <= 3)
+        recommendations.sort((a, b) => a.length - b.length);
     } else {
       recommendations = [...options];
     }
