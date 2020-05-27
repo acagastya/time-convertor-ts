@@ -9,13 +9,20 @@ import SimpleConvertor from './pages/SimpleConvertor';
 import Footer from './comps/Footer';
 import Header from './comps/Header';
 
-import { basePath, DEFAULT_TZ, localTimezone } from '../utils';
+import { displayTime } from '../utils';
+import { basePath, DEFAULT_TZ, HM, localTimezone, YMD } from '../utils';
 import useTime from '../utils/useTime';
 
 function App<never>(): JSX.Element {
   const now = useTime();
   const [timezone1, setTimezone1] = React.useState(DEFAULT_TZ);
   const [timezone2, setTimezone2] = React.useState(localTimezone);
+  const [date, setDate] = React.useState(
+    displayTime({ fmtStr: YMD, time: now, timezone: localTimezone })
+  );
+  const [time, setTime] = React.useState(
+    displayTime({ fmtStr: HM, time: now, timezone: localTimezone })
+  );
 
   return (
     <Router>
@@ -29,9 +36,12 @@ function App<never>(): JSX.Element {
             path={`${basePath}/future`}
             render={() => (
               <FutureConversion
-                time={now}
+                date={date}
+                setDate={setDate}
+                setTime={setTime}
                 setTZ1={setTimezone1}
                 setTZ2={setTimezone2}
+                time={time}
                 TZ1={timezone1}
                 TZ2={timezone2}
               />

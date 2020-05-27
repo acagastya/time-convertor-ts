@@ -14,9 +14,12 @@ export interface IDualConvertor {
 }
 
 export interface IFutureConversion {
+  date: string;
+  setDate: React.Dispatch<React.SetStateAction<string>>;
+  setTime: React.Dispatch<React.SetStateAction<string>>;
   setTZ1: React.Dispatch<React.SetStateAction<string>>;
   setTZ2: React.Dispatch<React.SetStateAction<string>>;
-  time: moment.Moment;
+  time: string;
   TZ1: string;
   TZ2: string;
 }

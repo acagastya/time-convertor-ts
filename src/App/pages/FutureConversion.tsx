@@ -7,24 +7,21 @@ import SavedFuture from '../comps/SavedFuture';
 import TimezoneInput from '../comps/TimezoneInput';
 
 import { displayTime, getYesterday, timezoneList } from '../../utils';
-import { HM, MAX_DATE, YMD, localTimezone } from '../../utils';
+import { MAX_DATE, YMD, localTimezone } from '../../utils';
 
 import { IFutureConversion } from '../../utils/interfaces';
 
 function FutureConversion({
+  date,
+  setDate,
+  setTime,
   setTZ1,
   setTZ2,
-  time: now, // aliased because [time, setTime] hook
+  time,
+  // now, // aliased because [time, setTime] hook
   TZ1,
   TZ2,
 }: IFutureConversion): JSX.Element {
-  const [date, setDate] = React.useState(
-    displayTime({ fmtStr: YMD, time: now, timezone: localTimezone })
-  );
-  const [time, setTime] = React.useState(
-    displayTime({ fmtStr: HM, time: now, timezone: localTimezone })
-  );
-
   const [selectedTime, setSelectedTime] = React.useState<
     moment.Moment | undefined
   >(undefined);
