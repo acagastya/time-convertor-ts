@@ -3,6 +3,7 @@ import moment from 'moment-timezone';
 
 import ErrorAlert from '../comps/ErrorAlert';
 import FutureConverted from '../comps/FutureConverted';
+import SavedFuture from '../comps/SavedFuture';
 import TimezoneInput from '../comps/TimezoneInput';
 
 import { displayTime, getYesterday, timezoneList } from '../../utils';
@@ -161,6 +162,7 @@ function FutureConversion({
           <FutureConverted selectedTime={selectedTime} TZ1={TZ1} TZ2={TZ2} />
         ) : null}
       </form>
+      <SavedFuture selectedTime={selectedTime} />
     </div>
   );
 }
