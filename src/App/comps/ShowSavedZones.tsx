@@ -20,15 +20,24 @@ function ShowSavedZones({
             key={zone}
             style={{ cursor: 'pointer' }}
           >
-            <h4>{friendlyStr(zone)}</h4>
-            <span>{displayTime({ fmtStr: HMSDMY, time, timezone: zone })}</span>
-            <button
-              className="btn btn-danger float-right"
-              type="button"
-              onClick={() => removeTimeZone(zone)}
-            >
-              Remove
-            </button>
+            <div className="row">
+              <div className="col">
+                <span className="h4">{friendlyStr(zone)}</span>
+                <br />
+                <span>
+                  {displayTime({ fmtStr: HMSDMY, time, timezone: zone })}
+                </span>
+              </div>
+              <div className="justify-content-center align-self-center col">
+                <button
+                  className="btn btn-danger float-right"
+                  onClick={() => removeTimeZone(zone)}
+                  type="button"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
