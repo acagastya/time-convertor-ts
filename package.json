@@ -29,8 +29,8 @@
     "build": "react-scripts build",
     "deploy": "react-scripts build && gh-pages -d build",
     "eject": "react-scripts eject",
-    "s": "react-scripts start",
-    "start": "react-scripts build && serve -l $PORT -s build",
+    "ogstart": "react-scripts start",
+    "start": "serve -l $PORT -s build",
     "test": "react-scripts test"
   },
   "eslintConfig": {
