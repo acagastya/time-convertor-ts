@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import ShowFuture from './ShowFuture';
+import ShowFuture from "./ShowFuture";
 
-import { getSavedZones } from '../../utils';
+import { getSavedZones } from "../../utils";
 
 function SavedFuture({
   selectedTime,
@@ -17,10 +17,10 @@ function SavedFuture({
       ) : (
         <h5
           className="border-top mt-5 text-center"
-          style={{ paddingTop: '1rem' }}
+          style={{ paddingTop: "1rem" }}
         >
-          You haven't {selectedTime ? 'saved any timezones' : 'selected a time'}{' '}
-          so far.{' '}
+          You haven't {selectedTime ? "saved any timezones" : "selected a time"}{" "}
+          so far.{" "}
           <span aria-label="Saved list is empty." role="img">
             😅
           </span>

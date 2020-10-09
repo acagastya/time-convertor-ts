@@ -1,8 +1,8 @@
-import React from 'react';
-import moment from 'moment-timezone';
+import React from "react";
+import moment from "moment-timezone";
 
-import { displayTime, friendlyStr, removeTimeZone } from '../../utils';
-import { HMMDY } from '../../utils';
+import { displayTime, friendlyStr, removeTimeZone } from "../../utils";
+import { HMMDY } from "../../utils";
 
 function ShowFuture({
   selectedTime,
@@ -19,7 +19,7 @@ function ShowFuture({
           <li
             className="list-group-item list-group-item-action"
             key={zone}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           >
             <h4>{friendlyStr(zone)}</h4>
             <span>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { basePath } from '../../utils';
+import { basePath } from "../../utils";
 
 function Header<never>(): JSX.Element {
   return (
@@ -9,7 +9,7 @@ function Header<never>(): JSX.Element {
       <Link className="navbar-brand" to={`${basePath}/`}>
         <span aria-label="time-convertor" role="img">
           ⏳
-        </span>{' '}
+        </span>{" "}
         time convertor
       </Link>
       <button

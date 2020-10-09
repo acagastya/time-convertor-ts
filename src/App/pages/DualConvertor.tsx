@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import SavedTimezones from '../comps/SavedTimezones';
-import TimezoneInput from '../comps/TimezoneInput';
+import SavedTimezones from "../comps/SavedTimezones";
+import TimezoneInput from "../comps/TimezoneInput";
 
 import {
   clearTimezones,
   displayTime,
   getSavedZones,
   saveTimezones,
-} from '../../utils';
+} from "../../utils";
 
-import { HMSDMY } from '../../utils';
+import { HMSDMY } from "../../utils";
 
-import { IDualConvertor } from '../../utils/interfaces';
+import { IDualConvertor } from "../../utils/interfaces";
 
 function DualConvertor({
   time,

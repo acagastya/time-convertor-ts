@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function ErrorAlert({ msg }: { msg: string }) {
   return (

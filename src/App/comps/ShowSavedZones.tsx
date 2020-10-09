@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { displayTime, friendlyStr, removeTimeZone } from '../../utils';
+import { displayTime, friendlyStr, removeTimeZone } from "../../utils";
 
-import { HMSDMY } from '../../utils';
+import { HMSDMY } from "../../utils";
 
-import { IShowSavedTimezones } from '../../utils/interfaces';
+import { IShowSavedTimezones } from "../../utils/interfaces";
 
 function ShowSavedZones({
   savedZones,
@@ -18,7 +18,7 @@ function ShowSavedZones({
           <li
             className="list-group-item list-group-item-action"
             key={zone}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
           >
             <div className="row">
               <div className="col">

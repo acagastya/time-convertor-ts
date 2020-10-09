@@ -1,38 +1,38 @@
-import React from 'react';
-import moment from 'moment-timezone';
-import { Link } from 'react-router-dom';
+import React from "react";
+import moment from "moment-timezone";
+import { Link } from "react-router-dom";
 
-import { basePath, localTimezone } from '../../utils';
-import TimezoneInput from '../comps/TimezoneInput';
+import { basePath, localTimezone } from "../../utils";
+import TimezoneInput from "../comps/TimezoneInput";
 
 function UNIXTime(): JSX.Element {
-  const timestamp = +window.location.pathname.replace('/', '') * 1000;
+  const timestamp = +window.location.pathname.replace("/", "") * 1000;
 
   const [TZ, setTZ] = React.useState<string>(localTimezone);
 
   const urlTime = moment.tz(timestamp, TZ);
   const rightNow = Date.now();
-  const isWas = urlTime.valueOf() >= rightNow ? 'is' : 'was';
+  const isWas = urlTime.valueOf() >= rightNow ? "is" : "was";
 
   const [instance, setInstance] = React.useState<moment.Moment>(urlTime);
 
   const [displayTime, setDisplayTime] = React.useState<string>(
-    instance.format('HH:mm MMM DD, YYYY Z (z)')
+    instance.format("HH:mm MMM DD, YYYY Z (z)")
   );
 
   const [timezone, setTimezone] = React.useState<string>(
-    instance.format('Z (z)')
+    instance.format("Z (z)")
   );
 
   function handleClick() {
     setInstance(moment.tz(timestamp, TZ));
-    setDisplayTime(instance.format('HH:mm MMM DD, YYYY Z (z)'));
-    setTimezone(instance.format('Z (z)'));
+    setDisplayTime(instance.format("HH:mm MMM DD, YYYY Z (z)"));
+    setTimezone(instance.format("Z (z)"));
   }
 
   function handleTimezoneChange(tz: React.SetStateAction<string>) {
     setTZ(tz);
-    setInstance(moment.tz(timestamp, '' + tz));
+    setInstance(moment.tz(timestamp, "" + tz));
   }
 
   return (

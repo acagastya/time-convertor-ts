@@ -29,6 +29,7 @@
     "build": "react-scripts build",
     "deploy": "react-scripts build && gh-pages -d build",
     "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.(ts|tsx)\"",
     "ogstart": "react-scripts start",
     "start": "serve -l $PORT -s build",
     "test": "react-scripts test"
@@ -56,6 +57,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "gh-pages": "^2.2.0",
+    "prettier": "^2.1.2",
     "serve": "^11.3.1"
   }
 }

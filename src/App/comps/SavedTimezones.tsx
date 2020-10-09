@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import ShowSavedZones from './ShowSavedZones';
+import ShowSavedZones from "./ShowSavedZones";
 
-import { getSavedZones } from '../../utils';
+import { getSavedZones } from "../../utils";
 
-import { IMoment } from '../../utils/interfaces';
+import { IMoment } from "../../utils/interfaces";
 
 function SavedTimezones({ time }: IMoment): JSX.Element {
   const savedZones = getSavedZones();
@@ -15,9 +15,9 @@ function SavedTimezones({ time }: IMoment): JSX.Element {
       ) : (
         <h5
           className="border-top mt-5 text-center"
-          style={{ paddingTop: '1rem' }}
+          style={{ paddingTop: "1rem" }}
         >
-          You haven't saved any timezones so far.{' '}
+          You haven't saved any timezones so far.{" "}
           <span aria-label="Saved list is empty." role="img">
             😅
           </span>

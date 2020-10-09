@@ -1,16 +1,16 @@
-import moment from 'moment-timezone';
+import moment from "moment-timezone";
 
-import { IDisplayTime } from '../utils/interfaces';
+import { IDisplayTime, IGetAbbr } from "../utils/interfaces";
 
 /**
  * @description clears the zones in localStorage
  */
 function clearTimezones<never>() {
-  localStorage.setItem('zones', '{}')
+  localStorage.setItem("zones", "{}");
 }
 
 /**
- * 
+ *
  * @param fmtStr {string} Formatting string (ex. 'HH:mm:ss MMMM DD, YYYY')
  * @param time {moment.Moment} Time to be formatted
  * @param timezone {string} Timezone to set
@@ -22,20 +22,20 @@ function displayTime({ fmtStr, time, timezone }: IDisplayTime) {
 
 /**
  * @description Convert a string like `foo_bar_baz` to `foo bar baz`
- * @param {string} str 
+ * @param {string} str
  */
 function friendlyStr(str: string): string {
-  return str.replace(/_/g, ' ');
+  return str.replace(/_/g, " ");
 }
 
 /**
- * 
+ *
  * @description Obtain the abbreviation of a timezone
  * @param timezone {string} Time zone string
  * @param time {moment.Moment} moment object
  * @returns {string}
  */
-function getAbbr({ timezone, time }: { timezone: string, time: moment.Moment }): string {
+function getAbbr({ timezone, time }: IGetAbbr): string {
   // @ts-ignore -- they most certainly won't be undefined
   return moment.tz.zone(timezone).abbr(time);
 }
@@ -46,7 +46,7 @@ function getAbbr({ timezone, time }: { timezone: string, time: moment.Moment }):
  */
 function getSavedZones<never>(): string[] | [] {
   // query localStorage to get JSON as string
-  const savedData: string = localStorage.getItem('zones') || '{}';
+  const savedData: string = localStorage.getItem("zones") || "{}";
   // extract array
   const savedZones: string[] = JSON.parse(savedData).list || [];
   return savedZones;
@@ -58,10 +58,10 @@ function getSavedZones<never>(): string[] | [] {
  * @returns {moment.Moment}
  */
 function getYesterday<never>(): moment.Moment {
-  const today = new Date()
-  const yesterday = new Date()
+  const today = new Date();
+  const yesterday = new Date();
 
-  yesterday.setDate(today.getDate() - 1)
+  yesterday.setDate(today.getDate() - 1);
   return moment(yesterday);
 }
 
@@ -69,7 +69,7 @@ function getYesterday<never>(): moment.Moment {
  * @description Removes one zone from localStorage
  * @param {string} zone zone to be removed from the localStorage
  */
-function removeTimeZone(zone: string = ''): void {
+function removeTimeZone(zone: string = ""): void {
   // get saved zones
   const savedZones = getSavedZones();
   // filter out
@@ -77,11 +77,11 @@ function removeTimeZone(zone: string = ''): void {
   // stringify JSON
   const newZonesStr = JSON.stringify({ list: updatedZones });
   // save to localStorage
-  localStorage.setItem('zones', newZonesStr);
+  localStorage.setItem("zones", newZonesStr);
 }
 
 /**
- * 
+ *
  * @description takes in an array of timezones and updates the localStorage
  * @param timezone {string[]} An array of timezones
  */
@@ -93,7 +93,7 @@ function saveTimezones(timezone: string[] | [] = []) {
   // stringify JSON
   const newZonesStr = JSON.stringify({ list: newZones });
   // save to localStorage
-  localStorage.setItem('zones', newZonesStr);
+  localStorage.setItem("zones", newZonesStr);
 }
 
 /**
@@ -101,7 +101,7 @@ function saveTimezones(timezone: string[] | [] = []) {
  * @param {string} str
  */
 function unfriendlyStr(str: string): string {
-  return str.replace(/ /g, '_');
+  return str.replace(/ /g, "_");
 }
 
 export {
@@ -113,19 +113,19 @@ export {
   getYesterday,
   removeTimeZone,
   saveTimezones,
-  unfriendlyStr
+  unfriendlyStr,
 };
 
 const basePath = process.env.PUBLIC_URL;
-const DEFAULT_TZ = 'UTC';
-const HM = 'HH:mm';
-const HMMDY = 'HH:mm MMMM DD, YYYY';
-const HMSDMY = 'HH:mm:ss MMMM DD, YYYY';
+const DEFAULT_TZ = "UTC";
+const HM = "HH:mm";
+const HMMDY = "HH:mm MMMM DD, YYYY";
+const HMSDMY = "HH:mm:ss MMMM DD, YYYY";
 const localTimezone = moment.tz.guess();
-const MAX_DATE = '2038-01-18';
+const MAX_DATE = "2038-01-18";
 const timezoneList = moment.tz.names().sort();
 const YEAR = new Date().getFullYear();
-const YMD = 'YYYY-MM-DD'
+const YMD = "YYYY-MM-DD";
 
 export {
   basePath,
@@ -137,5 +137,5 @@ export {
   MAX_DATE,
   timezoneList,
   YEAR,
-  YMD
+  YMD,
 };

@@ -1,15 +1,15 @@
-import React from 'react';
-import moment from 'moment-timezone';
+import React from "react";
+import moment from "moment-timezone";
 
-import ErrorAlert from '../comps/ErrorAlert';
-import FutureConverted from '../comps/FutureConverted';
-import SavedFuture from '../comps/SavedFuture';
-import TimezoneInput from '../comps/TimezoneInput';
+import ErrorAlert from "../comps/ErrorAlert";
+import FutureConverted from "../comps/FutureConverted";
+import SavedFuture from "../comps/SavedFuture";
+import TimezoneInput from "../comps/TimezoneInput";
 
-import { displayTime, getYesterday, timezoneList } from '../../utils';
-import { MAX_DATE, YMD, localTimezone } from '../../utils';
+import { displayTime, getYesterday, timezoneList } from "../../utils";
+import { MAX_DATE, YMD, localTimezone } from "../../utils";
 
-import { IFutureConversion } from '../../utils/interfaces';
+import { IFutureConversion } from "../../utils/interfaces";
 
 function FutureConversion({
   date,
@@ -25,7 +25,7 @@ function FutureConversion({
   const [selectedTime, setSelectedTime] = React.useState<
     moment.Moment | undefined
   >(undefined);
-  const [err, setErr] = React.useState<string>('');
+  const [err, setErr] = React.useState<string>("");
 
   function handleDateChange(e: React.ChangeEvent<HTMLInputElement>): void {
     setDate(e.target.value);
@@ -36,12 +36,12 @@ function FutureConversion({
     e.preventDefault();
 
     // 0. Reset Error and selected time
-    setErr('');
+    setErr("");
     setSelectedTime(undefined);
     // 1. Validate selected date
     const selectedDate = moment(date);
     if (!selectedDate.isValid()) {
-      setErr('Chosen date is not valid.');
+      setErr("Chosen date is not valid.");
       console.warn(err);
       return;
     }
@@ -49,7 +49,7 @@ function FutureConversion({
     // 2.1 MAX allowed
     const epoch = moment(MAX_DATE, YMD);
     if (epoch.unix() - selectedDate.unix() < 0) {
-      setErr('Chosen date is outside the maximum permissible limit.');
+      setErr("Chosen date is outside the maximum permissible limit.");
       console.warn(err);
       return;
     }
@@ -57,7 +57,7 @@ function FutureConversion({
     const yDayMoment = moment(yesterday.format(YMD), YMD);
     const selectedMoment = moment(selectedDate.format(YMD), YMD);
     if (selectedMoment.unix() - yDayMoment.unix() < 0) {
-      setErr('Chosen date is in the past.');
+      setErr("Chosen date is in the past.");
       console.warn(err);
       return;
     }
@@ -67,19 +67,19 @@ function FutureConversion({
     const dateTimeStr = `${dateStr} ${timeStr}`;
     const dateTime = moment.tz(dateTimeStr, TZ1);
     if (!dateTime.isValid()) {
-      setErr('Error occurred while parsing time.');
+      setErr("Error occurred while parsing time.");
       console.warn(err);
       return;
     }
     // 4. validate chosen timezone
     if (timezoneList.indexOf(TZ1) < 0) {
-      setErr('Selected timezone is invalid.');
+      setErr("Selected timezone is invalid.");
       console.warn(err);
       return;
     }
     // 5. validate set timezone
     if (timezoneList.indexOf(TZ2) < 0) {
-      setErr('Selected timezone to convert is invalid.');
+      setErr("Selected timezone to convert is invalid.");
       console.warn(err);
       return;
     }

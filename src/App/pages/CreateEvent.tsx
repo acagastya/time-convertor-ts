@@ -1,9 +1,9 @@
-import React from 'react';
-import moment from 'moment-timezone';
+import React from "react";
+import moment from "moment-timezone";
 
-import TimezoneInput from '../comps/TimezoneInput';
+import TimezoneInput from "../comps/TimezoneInput";
 
-import { HM, localTimezone, MAX_DATE, YMD } from '../../utils';
+import { HM, localTimezone, MAX_DATE, YMD } from "../../utils";
 
 function CreateEvent() {
   const { protocol, host } = window.location;
@@ -14,7 +14,7 @@ function CreateEvent() {
     stamp: now.unix(),
     time: now.format(HM),
   };
-  const [fullurl, setFullurl] = React.useState<string>('');
+  const [fullurl, setFullurl] = React.useState<string>("");
   const [date, setDate] = React.useState<string>(defaults.date);
   const [time, setTime] = React.useState<string>(defaults.time);
   const [timezone, setTimezone] = React.useState<string>(localTimezone);
@@ -23,7 +23,7 @@ function CreateEvent() {
   function copyToClipboard(): void {
     const el = textArea;
     el?.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
   }
 
   function generateLink(): void {
@@ -33,17 +33,17 @@ function CreateEvent() {
 
   function handleDateChange(e: React.ChangeEvent<HTMLInputElement>): void {
     setDate(e.target.value);
-    setFullurl('');
+    setFullurl("");
   }
 
   function handleTimeChange(e: React.ChangeEvent<HTMLInputElement>): void {
     setTime(e.target.value);
-    setFullurl('');
+    setFullurl("");
   }
 
   function handleTimezoneChange(tz: React.SetStateAction<string>): void {
     setTimezone(tz);
-    setFullurl('');
+    setFullurl("");
   }
 
   return (
@@ -94,7 +94,7 @@ function CreateEvent() {
           readOnly={true}
           ref={(text) => (textArea = text)}
           style={{
-            background: 'white',
+            background: "white",
           }}
           type="text"
           value={fullurl}

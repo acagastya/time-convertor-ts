@@ -1,19 +1,19 @@
-import React from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import CreateEvent from './pages/CreateEvent';
-import DualConvertor from './pages/DualConvertor';
-import FutureConversion from './pages/FutureConversion';
-import Help from './pages/Help';
-import SimpleConvertor from './pages/SimpleConvertor';
-import UNIXTime from './pages/UNIXTime';
+import CreateEvent from "./pages/CreateEvent";
+import DualConvertor from "./pages/DualConvertor";
+import FutureConversion from "./pages/FutureConversion";
+import Help from "./pages/Help";
+import SimpleConvertor from "./pages/SimpleConvertor";
+import UNIXTime from "./pages/UNIXTime";
 
-import Footer from './comps/Footer';
-import Header from './comps/Header';
+import Footer from "./comps/Footer";
+import Header from "./comps/Header";
 
-import { displayTime } from '../utils';
-import { basePath, DEFAULT_TZ, HM, localTimezone, YMD } from '../utils';
-import useTime from '../utils/useTime';
+import { displayTime } from "../utils";
+import { basePath, DEFAULT_TZ, HM, localTimezone, YMD } from "../utils";
+import useTime from "../utils/useTime";
 
 function App<never>(): JSX.Element {
   const now = useTime();

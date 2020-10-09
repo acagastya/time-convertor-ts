@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export interface IDisplayTime {
   fmtStr: string;
@@ -27,6 +27,11 @@ export interface IFutureConverted {
   selectedTime: moment.Moment;
   TZ1: string;
   TZ2: string;
+}
+
+export interface IGetAbbr {
+  time: moment.Moment;
+  timezone: string;
 }
 
 export interface IMoment {

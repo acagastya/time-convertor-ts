@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import moment from 'moment-timezone';
-
+import { useState, useEffect } from "react";
+import moment from "moment-timezone";
 
 /**
  * @description A custom hook which returns the current time as a moment object.

@@ -1,31 +1,31 @@
-import React from 'react';
+import React from "react";
 
-import { friendlyStr, unfriendlyStr } from '../../utils';
+import { friendlyStr, unfriendlyStr } from "../../utils";
 
-import { timezoneList } from '../../utils';
+import { timezoneList } from "../../utils";
 
-import { ITimezoneInput } from '../../utils/interfaces';
+import { ITimezoneInput } from "../../utils/interfaces";
 
 function TimezoneInput({
   autofocus = false,
   changeValue,
   clearInput,
-  id = '',
-  placeholder = 'Time zone',
-  TZ = 'UTC',
+  id = "",
+  placeholder = "Time zone",
+  TZ = "UTC",
 }: ITimezoneInput): JSX.Element {
   const options = timezoneList;
   const [suggestions, setSuggestions] = React.useState<string[] | []>([]);
   const [inputValue, setInputValue] = React.useState(friendlyStr(TZ));
   const [style, setStyle] = React.useState<object>({
     border: 0,
-    borderBottom: '1px solid silver',
+    borderBottom: "1px solid silver",
   });
 
   function handleBlur(): void {
     setStyle({
-      'border': 0,
-      'borderBottom': '1px solid silver',
+      border: 0,
+      borderBottom: "1px solid silver",
     });
   }
 
@@ -55,7 +55,7 @@ function TimezoneInput({
 
   function handleFocus(): void {
     setStyle({
-      'border': 'none',
+      border: "none",
     });
   }
 
@@ -65,7 +65,7 @@ function TimezoneInput({
         className="list-group-item list-group-item-action"
         key={index}
         onClick={() => handleClick(str)}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
       >
         {friendlyStr(str)}
       </li>
@@ -96,15 +96,15 @@ function TimezoneInput({
         style={{
           boxShadow:
             suggestions.length > 0
-              ? '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
-              : 'none',
-          left: '15px',
-          maxHeight: '50vh',
-          overflowX: 'scroll',
-          scrollbarWidth: 'none',
-          position: 'absolute',
-          right: '15px',
-          WebkitOverflowScrolling: 'touch',
+              ? "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)"
+              : "none",
+          left: "15px",
+          maxHeight: "50vh",
+          overflowX: "scroll",
+          scrollbarWidth: "none",
+          position: "absolute",
+          right: "15px",
+          WebkitOverflowScrolling: "touch",
           zIndex: 2,
         }}
       >

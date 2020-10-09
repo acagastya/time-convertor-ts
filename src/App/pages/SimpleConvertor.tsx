@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import SavedTimezones from '../comps/SavedTimezones';
-import TimezoneInput from '../comps/TimezoneInput';
+import SavedTimezones from "../comps/SavedTimezones";
+import TimezoneInput from "../comps/TimezoneInput";
 
 import {
   clearTimezones,
@@ -10,11 +10,11 @@ import {
   getSavedZones,
   localTimezone,
   saveTimezones,
-} from '../../utils';
+} from "../../utils";
 
-import { HMSDMY } from '../../utils';
+import { HMSDMY } from "../../utils";
 
-import { ISimpleConvertor } from '../../utils/interfaces';
+import { ISimpleConvertor } from "../../utils/interfaces";
 
 function SimpleConvertor({ setTZ1, time, TZ1 }: ISimpleConvertor): JSX.Element {
   return (
@@ -26,7 +26,7 @@ function SimpleConvertor({ setTZ1, time, TZ1 }: ISimpleConvertor): JSX.Element {
         <div
           className="col text-right"
           id="first-time-lbl-box"
-          style={{ cursor: 'not-allowed' }}
+          style={{ cursor: "not-allowed" }}
         >
           <div className="h4">{friendlyStr(localTimezone)} (Local time)</div>
         </div>
