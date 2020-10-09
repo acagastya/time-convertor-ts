@@ -109,7 +109,7 @@ function TimezoneInput({
         }}
       >
         <div className="h6 mb-0">
-          <ul className="list-group">
+          <ul className="list-group text-left">
             {
               // @ts-ignore don't know why ts is complaining about this
               suggestions.length > 0 ? suggestions.map(showLI) : null

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
+import CreateEvent from './pages/CreateEvent';
 import DualConvertor from './pages/DualConvertor';
 import FutureConversion from './pages/FutureConversion';
 import Help from './pages/Help';
 import SimpleConvertor from './pages/SimpleConvertor';
+import UNIXTime from './pages/UNIXTime';
 
 import Footer from './comps/Footer';
 import Header from './comps/Header';
@@ -60,6 +62,8 @@ function App<never>(): JSX.Element {
               />
             )}
           />
+          <Route path={`${basePath}/create`} render={() => <CreateEvent />} />
+          <Route path={`${basePath}/([0-9]+)`} render={() => <UNIXTime />} />
           <Route
             path={`${basePath}/`}
             render={() => (

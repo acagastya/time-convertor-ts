@@ -24,6 +24,11 @@ function Header<never>(): JSX.Element {
       <div className="collapse navbar-collapse" id="collapsibleNavbar">
         <ul className="navbar-nav">
           <li className="nav-item">
+            <Link className="nav-link" to={`${basePath}/create`}>
+              Create-events
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link" to={`${basePath}/help`}>
               Help
             </Link>

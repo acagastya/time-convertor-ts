@@ -30,6 +30,11 @@ function Help({ time }: IMoment): JSX.Element {
           You can <span className="font-weight-bold">save</span> the converted
           timezones, by clicking the "Save" button.
         </li>
+        <li>
+          Use the <Link to={`${basePath}/create`}>Create event</Link> link to
+          schedule an event and share the link with participants. They can view
+          the event's scheduled time in their respective time zones.
+        </li>
       </ol>
     </div>
   );
