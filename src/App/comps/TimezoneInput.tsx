@@ -15,7 +15,7 @@ function TimezoneInput({
   TZ = "UTC",
 }: ITimezoneInput): JSX.Element {
   const options = timezoneList;
-  const [suggestions, setSuggestions] = React.useState<string[] | []>([]);
+  const [suggestions, setSuggestions] = React.useState<string[]>([]);
   const [inputValue, setInputValue] = React.useState(friendlyStr(TZ));
   const [style, setStyle] = React.useState<object>({
     border: 0,
@@ -110,10 +110,7 @@ function TimezoneInput({
       >
         <div className="h6 mb-0">
           <ul className="list-group text-left">
-            {
-              // @ts-ignore don't know why ts is complaining about this
-              suggestions.length > 0 ? suggestions.map(showLI) : null
-            }
+            {suggestions.length > 0 ? suggestions.map(showLI) : null}
           </ul>
         </div>
       </div>

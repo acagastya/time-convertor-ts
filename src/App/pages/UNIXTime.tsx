@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment-timezone";
 import { Link } from "react-router-dom";
+import Countdown from "react-countdown";
 
 import { basePath, localTimezone } from "../../utils";
 import TimezoneInput from "../comps/TimezoneInput";
@@ -51,7 +52,13 @@ function UNIXTime(): JSX.Element {
         <button className="btn btn-primary mb-5 mt-3" onClick={handleClick}>
           Change
         </button>
-        <p className="mb-5 mt-5"></p>
+        <h2 className="mb-2 mt-2">
+          {isWas === "is" ? (
+            <Countdown date={timestamp} />
+          ) : (
+            "The event has commenced."
+          )}
+        </h2>
         <Link
           className="btn btn-info mt-5"
           role="button"
